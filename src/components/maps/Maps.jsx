@@ -6,12 +6,17 @@ class Maps extends Component {
 
 
   render() {
+    const mapStyles = {
+      width: '50%',
+      height: '50%'
+    }
     return (
-      <div>
+      <div className="map-container">
         <Map
           google={this.props.google}
           zoom={6}
           initialCenter={{ lat: 40.444, lng: -115.176 }}
+          styles={mapStyles}
         />
       </div>
     );
