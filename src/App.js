@@ -9,9 +9,7 @@ function App() {
     <div >
       <BrowserRouter>
         <Route exact path="/map" component={Maps} />
-
       </BrowserRouter>
-      {/* <Maps /> */}
     </div>
   );
 }
