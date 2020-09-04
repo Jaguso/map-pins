@@ -29,12 +29,16 @@ class Maps extends Component {
     })
   }
 
+  onMapClicked = () => {
+
+  }
+
 
   render() {
     const mapStyles = {
-      position: 'relative',
-      width: '50%',
-      height: '50%',
+      width: '70%',
+      height: '60%',
+      border: 'rgba(0,0,0,0.5) 2px solid'
     }
     return (
       <div className="maps-container">
@@ -44,14 +48,15 @@ class Maps extends Component {
           google={this.state.google}
           zoom={6}
           initialCenter={{ lat: 40.444, lng: -115.176 }}
-          styles={mapStyles}
+          containerStyle={mapStyles}
+          onClick={this.onMapClicked}
         >
           {this.displayMarkers()}
-          {/* <InfoWindow onClose={this.onInfoWindowClose}>
+          <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
-              <h1>{this.state.selectedPlace.name}</h1>
+              {/* <h1>{this.stat  e.selectedPlace.name}</h1> */}
             </div>
-          </InfoWindow> */}
+          </InfoWindow>
         </Map>
       </div>
     );
