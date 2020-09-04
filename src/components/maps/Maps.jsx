@@ -12,7 +12,8 @@ class Maps extends Component {
       { latitude: 47.6307081, longitude: -122.1434325 },
       { latitude: 47.3084488, longitude: -122.2140121 },
       { latitude: 47.5524695, longitude: -122.0425407 }
-    ]
+    ],
+    markers: []
   }
 
   componentDidMount() {
@@ -29,7 +30,23 @@ class Maps extends Component {
     })
   }
 
-  onMapClicked = () => {
+  onMapClicked = (t, map, coord) => {
+    const { latLng } = coord;
+    const lat = latLng.lat();
+    const lng = latLng.lng();
+
+    this.setState(previousState => {
+      return {
+        markers: [
+          ...previousState.markers,
+          {
+            title: "",
+            name: "",
+            position: { lat, lng }
+          }
+        ]
+      };
+    });
 
   }
 
@@ -51,12 +68,9 @@ class Maps extends Component {
           containerStyle={mapStyles}
           onClick={this.onMapClicked}
         >
-          {this.displayMarkers()}
-          <InfoWindow onClose={this.onInfoWindowClose}>
-            <div>
-              {/* <h1>{this.stat  e.selectedPlace.name}</h1> */}
-            </div>
-          </InfoWindow>
+          {this.state.markers.map((marker, index) => (
+            <Marker />
+          ))}
         </Map>
       </div>
     );
